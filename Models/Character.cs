@@ -21,12 +21,12 @@ public abstract class Character
 
     #region 생성자
 
-    protected Character(string name, int maxHp, int attackPower, int defense, int level)
+    protected Character(string name, int maxHp, int maxMp, int attackPower, int defense, int level)
     {
         Name = name;
         MaxHp = maxHp;
         CurrentHp = maxHp; //초기 HP는 최대 HP로 설정
-        CurrentMp = MaxMp;
+        CurrentMp = maxMp;
         AttackPower = attackPower;
         Defense = defense;
         Level = level;
