@@ -75,4 +75,15 @@ public class Player : Character
 
     #endregion
 
+    #region 메서드
+
+    //플레이어 정보 출력 (오버라이드)
+    public override void DisplayInfo()
+    {
+        base.DisplayInfo(); //부모 클래스의 DisplayInfo 호출하여 기본 정보 출력
+        Console.WriteLine($"골드 : {Gold}");
+    }
+
+    #endregion
+
 }
