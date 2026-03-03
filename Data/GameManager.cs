@@ -126,16 +126,10 @@ public class GameManager
         Player = new Player(name, job);
         Console.WriteLine($"\n{name}님, {job}직업으로 캐릭터가 생성되었습니다!");
         
-        // Ctrl + K + C : 주석 처리 / Ctrl + K + U : 주석 해제
-        // VS Code에서는 Ctrl + / : 주석 처리/해제
+        //적 캐릭터 생성
+        Enemy enemy = Enemy.CreateEnemy(Player.Level);
+        enemy.DisplayInfo();
         
-        // Test Code
-        // Console.WriteLine($"Player HP: {Player.CurrentHp}");
-        // Console.WriteLine($"Player MP: {Player.CurrentMp}");
-        // Console.WriteLine($"Player ATX: {Player.AttackPower}");
-        // Console.WriteLine($"Player DEF: {Player.Defense}");
-        
-        // Player.DisplayInfo();
         ConsoleUI.PressAnyKey();
     }
     #endregion
