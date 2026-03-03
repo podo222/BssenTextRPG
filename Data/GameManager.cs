@@ -1,5 +1,6 @@
 using BssenTextRPG.Utils;
 using BssenTextRPG.Models;
+using BssenTextRPG.Systems;
 
 namespace BssenTextRPG.Data;
 
@@ -129,6 +130,10 @@ public class GameManager
         //적 캐릭터 생성
         Enemy enemy = Enemy.CreateEnemy(Player.Level);
         enemy.DisplayInfo();
+        
+        //전투 테스트
+        BattleSystem battleSystem = new BattleSystem();
+        bool playerWin = battleSystem.StartBattle(Player, enemy);
         
         ConsoleUI.PressAnyKey();
     }
