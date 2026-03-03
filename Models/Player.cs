@@ -78,12 +78,21 @@ public class Player : Character
     #region 메서드
 
     //플레이어 정보 출력 (오버라이드)
+
     public override void DisplayInfo()
     {
         base.DisplayInfo(); //부모 클래스의 DisplayInfo 호출하여 기본 정보 출력
         Console.WriteLine($"골드 : {Gold}");
     }
 
+    public override int Attack(Character target)
+    {
+        //TODO: 장착 무기 또는 방어구에 따른 추가 데미지 계산
+        int attackDamage = AttackPower;
+
+        return target.TakeDamage(attackDamage);
+    }
+    
     #endregion
 
 }

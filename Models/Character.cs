@@ -37,6 +37,19 @@ public abstract class Character
     #region 메서드
 
     //공통으로 사용할 메서드
+    //추상 메서드(abstract method): 반드시 자식 메서드에서 구현해야 하는 메서드
+    public abstract int Attack(Character target);
+    
+    //데미지 처리 메서드
+    //가상 메서드(virtual method): 자식 클래스에서 필요에 따라 오버라이드하여 구현할 수 있는 메서드
+    public virtual int TakeDamage(int damage)
+    {
+        // 방어력 적용
+        int actualDamage = Math.Max(1, damage - Defense); //실제 데미지는 방어력을 뺀 값, 최소 1
+        CurrentHp = Math.Max(0, CurrentHp - actualDamage);
+        return actualDamage;
+    }
+    
     //캐릭터 스텟 출력
     public virtual void DisplayInfo()
     {
