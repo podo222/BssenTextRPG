@@ -24,4 +24,25 @@ public class ConsoleUI
 ╚═══════════════════════════════════════════════════════════════════════╝
 ");
     }
+    
+    // 아무키나 누르면 계속 메시지 출력
+
+    public static void PressAnyKey()
+    {
+        Console.WriteLine("\n아무 키나 누르면 계속합니다...");
+        //Console.ReadKey() : 사용자가 키보드에서 키를 누를 때까지 대기하는 메서드, true 매개변수는 입력된 키를 콘솔에 표시하지 않도록 설정
+        Console.ReadKey(true);
+    }
+    
+    // 게임 오버 메시지 출력
+    public static void ShowGameOver()
+    {
+        Console.Clear();
+        Console.WriteLine("\n╔══════════════════════════════════════════╗");
+        Console.WriteLine("║                                          ║");
+        Console.WriteLine("║            GAME OVER                     ║");
+        Console.WriteLine("║                                          ║");
+        Console.WriteLine("╚══════════════════════════════════════════╝\n");
+        Console.WriteLine("게임을 종료합니다...");
+    }
 }
