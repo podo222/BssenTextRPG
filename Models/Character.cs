@@ -1,3 +1,5 @@
+using System;
+
 namespace BssenTextRPG.Models;
 
 //캐릭터 기본 추상 클래스
@@ -25,6 +27,7 @@ public abstract class Character
     {
         Name = name;
         MaxHp = maxHp;
+        MaxMp = maxMp;
         CurrentHp = maxHp; //초기 HP는 최대 HP로 설정
         CurrentMp = maxMp;
         AttackPower = attackPower;

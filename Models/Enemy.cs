@@ -1,3 +1,5 @@
+using System;
+
 namespace BssenTextRPG.Models;
 
 public class Enemy : Character

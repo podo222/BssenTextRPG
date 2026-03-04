@@ -1,4 +1,5 @@
-﻿using BssenTextRPG.Utils;
+﻿using System;
+using BssenTextRPG.Utils;
 using BssenTextRPG.Data;
 
 namespace BssenTextRPG;

@@ -1,3 +1,5 @@
+using System;
+
 namespace BssenTextRPG.Models;
 
 public class Player : Character
@@ -84,7 +86,8 @@ public class Player : Character
         base.DisplayInfo(); //부모 클래스의 DisplayInfo 호출하여 기본 정보 출력
         Console.WriteLine($"골드 : {Gold}");
     }
-
+    
+    //기본 공격 메서드 (override)
     public override int Attack(Character target)
     {
         //TODO: 장착 무기 또는 방어구에 따른 추가 데미지 계산
@@ -92,7 +95,24 @@ public class Player : Character
 
         return target.TakeDamage(attackDamage);
     }
-    
+
+    //스킬 공격 (MP 소모): 플레이어 전용 메서드 
+    //공격한 후 데미지 값 리턴
+    public int SkillAtack(Character target)
+    {
+        int mpCost = 15;
+        
+        //스킬 공격 = 기본 공격 1.5데미지
+        int totalDamage = AttackPower;
+        totalDamage = (int)(totalDamage * 1.5f);
+        
+        //MP 소모
+        CurrentMp -= mpCost;
+        
+        //데미지 전달
+        return target.TakeDamage(totalDamage);
+    }
+
     #endregion
 
 }
