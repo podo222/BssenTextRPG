@@ -17,3 +17,10 @@ public enum ItemType
     Potion
     //속성들을 추가할 아이템 스크립트 생성
 }
+
+//장비 슬롯 타입 (무기, 방어구, 악세사리)
+public enum EquipmentSlot
+{
+    Weapon,
+    Armor,
+}
