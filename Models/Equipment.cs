@@ -38,8 +38,8 @@ public class Equipment : Item
     public override bool Use(Player player)
     {
         //장비 장착 로직 구현
+        player.EquipItem(this);
         return true;
-
     }
 
     #region 장착아이템 생성 메서드
