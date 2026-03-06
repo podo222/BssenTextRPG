@@ -92,7 +92,7 @@ public class InventorySystem
                     break;
                 case "2":
                     //아이템 버리기 로직
-                    DropItem();
+                    DropItem(player);
                     break;
                 case "0":
                     return; //인벤토리 메뉴 종료
@@ -141,7 +141,7 @@ public class InventorySystem
 
     #region 아이템 버리기
 
-    private void DropItem()
+    private void DropItem(Player player)
     {
         if (Items.Count == 0) return;
 
@@ -154,7 +154,24 @@ public class InventorySystem
             //ToLower() : 문자열을 소문자로 변환하는 메서드, 사용자가 대소문자 구분 없이 입력할 수 있도록 함
             if (Console.ReadLine()?.ToLower() == "y")
             {
+                //장착 해제 로직
+                //item이 Equipment 타입인지 확인하고 equipment 변수에 할당
+                if (item is Equipment equipment)
+                {
+                    if (equipment == player.EquipedWeapon)
+                    {
+                        player.UnequipItem(EquipmentSlot.Weapon);
+                    }
+                    else if (equipment == player.EquipedArmor)
+                    {
+                        player.UnequipItem(EquipmentSlot.Armor);
+                    }
+                }
+                
                 RemoveItem(item);
+
+                Console.WriteLine($"{item.Name}을 버렸습니다.");
+                ConsoleUI.PressAnyKey();
             }
             else if (index != 0)
             {
