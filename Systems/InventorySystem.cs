@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BssenTextRPG.Models;
+using BssenTextRPG.Utils;
 
 namespace BssenTextRPG.Systems;
 
@@ -91,6 +92,7 @@ public class InventorySystem
                     break;
                 case "2":
                     //아이템 버리기 로직
+                    DropItem();
                     break;
                 case "0":
                     return; //인벤토리 메뉴 종료
@@ -115,7 +117,7 @@ public class InventorySystem
         Console.Write("\n사용할 아이템 번호 (0 : 취소)> ");
         
         //int.TryParse() : 문자열을 정수로 변환하려고 시도하는 메서드, 변환이 성공하면 true 반환, 실패하면 false 반환
-        if (int.TryParse(Console.ReadLine(), out int index) && index > 0 && index < Items.Count)
+        if (int.TryParse(Console.ReadLine(), out int index) && index > 0 && index <= Items.Count)
         {
             Item item = Items[index - 1];
             if (item.Use(player))
@@ -130,9 +132,37 @@ public class InventorySystem
         else if (index != 0)
         {
             Console.WriteLine("잘못된 선택입니다.");
+            ConsoleUI.PressAnyKey();
         }
     }
 
+
+    #endregion
+
+    #region 아이템 버리기
+
+    private void DropItem()
+    {
+        if (Items.Count == 0) return;
+
+        Console.WriteLine("\n버릴 아이템 번호 (0 : 취소)> ");
+
+        if (int.TryParse(Console.ReadLine(), out int index) && index > 0 && index <= Items.Count)
+        {
+            Item item = Items[index - 1];
+            Console.Write($"정말 {item.Name}을 버리겠습니까? (Y/N) > ");
+            //ToLower() : 문자열을 소문자로 변환하는 메서드, 사용자가 대소문자 구분 없이 입력할 수 있도록 함
+            if (Console.ReadLine()?.ToLower() == "y")
+            {
+                RemoveItem(item);
+            }
+            else if (index != 0)
+            {
+                Console.WriteLine("잘못된 선택입니다.");
+                ConsoleUI.PressAnyKey();
+            }
+        }
+    }
 
     #endregion
 }
