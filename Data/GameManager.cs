@@ -233,6 +233,10 @@ public class GameManager
                 //휴식 기능 구현
                 Rest();
                 break;
+            case "6":
+                //게임 저장 기능 구현
+                SaveGame();
+                break;
             case "0":
                 IsRunning = false;
                 Console.WriteLine("\n게임을 종료합니다. 감사합니다!");
@@ -294,5 +298,26 @@ public class GameManager
             ConsoleUI.PressAnyKey();
         }
     }
+    #endregion
+
+    #region 저장 기능
+
+    public void SaveGame()
+    {
+        if (Player == null || Inventory == null)
+        {
+            Console.WriteLine("\n저장할 게임 데이터가 없습니다.");
+            ConsoleUI.PressAnyKey();
+            return;
+        }
+
+        if (SaveLoadSystem.SaveGame(Player, Inventory))
+        {
+            Console.WriteLine("\n정상적으로 게임이 저장되었습니다.");
+            ConsoleUI.PressAnyKey();
+            return;
+        }
+    }
+
     #endregion
 }
