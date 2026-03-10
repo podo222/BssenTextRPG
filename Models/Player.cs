@@ -7,7 +7,7 @@ public class Player : Character
     #region 프로퍼티
 
     public JobType Job { get; private set; }
-    public int Gold { get; private set; }
+    public int Gold { get; set; }
     //장착 무기
     public Equipment? EquipedWeapon { get; private set; }
     //장착 방어구

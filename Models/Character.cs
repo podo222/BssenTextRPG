@@ -8,14 +8,14 @@ public abstract class Character
     #region 프로퍼티
 
     //protected : 해당 클래스 내에서는 접근 가능하지만, 외부에서는 접근 불가능한 접근 제한자, 자식 클래스에서는 접근 가능
-    public string Name { get; protected set; }
-    public int CurrentHp { get; protected set; }
-    public int MaxHp { get; protected set; }
-    public int CurrentMp { get; protected set; }
-    public int MaxMp { get; protected set; }
-    public int AttackPower { get; protected set; }
-    public int Defense { get; protected set; }
-    public int Level { get; protected set; }
+    public string Name { get; set; }
+    public int CurrentHp { get; set; }
+    public int MaxHp { get; set; }
+    public int CurrentMp { get; set; }
+    public int MaxMp { get; set; }
+    public int AttackPower { get; set; }
+    public int Defense { get; set; }
+    public int Level { get; set; }
     //생존 여부
     public bool IsAlive => CurrentHp > 0; //현재 HP가 0보다 크면 생존, 그렇지 않으면 사망
 
